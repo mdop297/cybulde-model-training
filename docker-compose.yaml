@@ -2,9 +2,9 @@ services:
   app:
     user: "${USER_ID:-1000}"
     hostname: "${HOST_NAME:-mdop}"
-    image: mlproject-template
+    image: mlproject-model-training
     platform: linux/amd64
-    container_name: mlproject-template-container
+    container_name: mlproject-model-training-container
     build:
       context: .
       dockerfile: ./docker/Dockerfile
