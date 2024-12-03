@@ -13,7 +13,7 @@ else
 endif
 
 SERVICE_NAME = app
-CONTAINER_NAME = mlproject-template-container
+CONTAINER_NAME = cybulde-model-container
 
 DIRS_TO_VALIDATE = src
 DOCKER_COMPOSE_RUN = $(DOCKER_COMPOSE_COMMAND) run --rm $(SERVICE_NAME)
@@ -26,8 +26,8 @@ guard-%:
 	@#$(or ${$*}, $(error $* is not set))
 
 ## Call entrypoint
-entrypoint: up
-	$(DOCKER_COMPOSE_EXEC) python ./src/entrypoint.py
+local-run-tasks: up
+	$(DOCKER_COMPOSE_EXEC) python ./src/run_tasks.py
 
 ## Starts jupyter lab
 notebook: up
