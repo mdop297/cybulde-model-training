@@ -40,6 +40,10 @@ DOCKER_COMPOSE_EXEC_PROD = $(DOCKER_COMPOSE_COMMAND) exec $(PROD_SERVICE_NAME)
 
 export
 
+## Generate final config local. For overrides use: OVERRIDES=<overrides>
+local-generate-final-config: up
+	@$(DOCKER_COMPOSE_EXEC) python src/generate_final_config.py ${OVERRIDES}
+
 # Returns true if the stem is a non-empty environment variable, or else raises an error.
 guard-%:
 	@#$(or ${$*}, $(error $* is not set))

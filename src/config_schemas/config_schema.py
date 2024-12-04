@@ -1,10 +1,12 @@
+from dataclasses import field
 from hydra.core.config_store import ConfigStore
 from pydantic.dataclasses import dataclass
+from src.config_schemas.infrastructure.infrastructure_schema import InfrastructureConfig
 
 
 @dataclass
 class Config:
-    helle: str = "world"
+    infrastructure: InfrastructureConfig = field(default_factory=InfrastructureConfig)
 
 
 def setup_config() -> None:
